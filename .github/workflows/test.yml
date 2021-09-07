@@ -42,7 +42,7 @@ jobs:
           
       - name: Print outputs 
         env: 
-          NAME: ${{ jobs.names.outputs.test }}
+          NAME: ${{ steps.names.outputs.test }}
         run:
           echo $NAME
         
