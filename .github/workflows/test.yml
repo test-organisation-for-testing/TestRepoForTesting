@@ -39,4 +39,8 @@ jobs:
         id: names
         run: |
           echo "::set-output name=test::something"
+          
+      - name: Print outputs 
+        env: 
+          NAME: ${{ jobs.names.outputs.test }}
         
