@@ -38,7 +38,7 @@ jobs:
       - name: Generate Lambda and ECR Names from Repo Title 
         id: names
         run: |
-          python -c "import re;print('::set-output name=kebab::'+re.sub(r'(?<!^)(?=[A-Z])', '-', 'TestRepoForTesting').lower())"
+          python -c "import re;print('::set-output name=kebab::'+re.sub(r'(?<!^)(?=[A-Z])', '-', '${{ github.event.repository.name }}').lower())"
           
       - name: Print outputs 
         env: 
