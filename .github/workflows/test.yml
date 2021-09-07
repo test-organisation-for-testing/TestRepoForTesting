@@ -38,11 +38,11 @@ jobs:
       - name: Generate Lambda and ECR Names from Repo Title 
         id: names
         run: |
-          echo "::set-output name=test::something"
+          python -c "import re;print('::set-output name=kebab::'+re.sub(r'(?<!^)(?=[A-Z])', '-', 'TestRepoForTesting').lower())"
           
       - name: Print outputs 
         env: 
-          NAME: ${{ steps.names.outputs.test }}
+          ECR_REPO_NAME: ${{ steps.names.outputs.kebab }}
         run:
-          echo $NAME
+          echo $ECR_REPO_NAME
         
